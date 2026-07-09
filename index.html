@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHUSUN — AI-Powered Smart Greenhouse Management</title>
+    <meta name="description" content="GHUSUN is an AI-powered smart greenhouse management system for Jordan and the MENA region. Seeking partnership, pilot access, and mentorship.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════════
+           DESIGN TOKENS
+        ═══════════════════════════════════════════ */
+        :root {
+            --bg-deep:    #050f09;
+            --bg-mid:     #081a0f;
+            --bg-card:    #0c2416;
+            --border:     rgba(0,250,105,0.12);
+            --accent:     #00FA69;
+            --accent-dim: #00c752;
+            --white:      #ffffff;
+            --gray-1:     #e2e8e4;
+            --gray-2:     #9aada0;
+            --gray-3:     #4a5e52;
+            --r-lg: 20px;
+            --r-xl: 28px;
+
+            /* fluid font scale */
+            --fs-xs:  clamp(11px, 1.5vw, 12px);
+            --fs-sm:  clamp(13px, 2vw,   15px);
+            --fs-md:  clamp(15px, 2.5vw, 17px);
+            --fs-lg:  clamp(20px, 3vw,   24px);
+            --fs-xl:  clamp(28px, 5vw,   48px);
+            --fs-2xl: clamp(36px, 6vw,   64px);
+        }
+
+        /* ═══════════════════════════════════════════
+           RESET & BASE
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-deep);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ─── Scrollbar ─── */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        /* ═══════════════════════════════════════════
+           LAYOUT UTILITIES
+        ═══════════════════════════════════════════ */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 5vw, 32px);
+        }
+        .section     { padding: clamp(60px, 10vw, 110px) 0; }
+        .section-sm  { padding: clamp(40px, 7vw, 70px) 0; }
+
+        /* ─── Typography helpers ─── */
+        .label {
+            display: block;
+            font-size: var(--fs-xs);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        .heading {
+            font-size: var(--fs-xl);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+        }
+        .subtext {
+            font-size: var(--fs-md);
+            color: var(--gray-2);
+            line-height: 1.75;
+            margin-top: 14px;
+        }
+
+        /* ─── Card ─── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: clamp(24px, 4vw, 36px);
+            transition: border-color .3s, transform .3s, box-shadow .3s;
+        }
+        .card:hover {
+            border-color: rgba(0,250,105,.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,250,105,.07);
+        }
+
+        /* ─── Buttons ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: clamp(12px, 2vw, 15px) clamp(20px, 4vw, 28px);
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: var(--fs-sm);
+            cursor: pointer;
+            border: none;
+            transition: background .2s, transform .2s, box-shadow .2s, border-color .2s, color .2s;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-deep);
+            box-shadow: 0 0 24px rgba(0,250,105,.35);
+        }
+        .btn-primary:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+            box-shadow: 0 0 36px rgba(0,250,105,.5);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--gray-3);
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ─── Icon box ─── */
+        .icon-box {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: rgba(0,250,105,.1);
+            border: 1px solid rgba(0,250,105,.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ─── Checklist ─── */
+        .check-list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+        .check-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: var(--fs-sm); color: var(--gray-1); font-weight: 500;
+            line-height: 1.5;
+        }
+        .check-item i { color: var(--accent); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+
+        /* ═══════════════════════════════════════════
+           NAVBAR
+        ═══════════════════════════════════════════ */
+        #navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 999;
+            transition: background .4s, box-shadow .4s;
+            padding: 0 clamp(16px, 5vw, 32px);
+        }
+        #navbar.scrolled {
+            background: rgba(5,15,9,.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            font-size: clamp(18px, 3vw, 22px);
+            font-weight: 900; letter-spacing: 0.06em;
+        }
+        .nav-logo span { color: var(--accent); }
+
+        /* Desktop links */
+        .nav-links {
+            display: flex; align-items: center; gap: clamp(20px, 3vw, 36px);
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 14px; font-weight: 600; color: var(--gray-2);
+            transition: color .2s;
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { font-size: 13px !important; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column; gap: 5px;
+            cursor: pointer; padding: 4px;
+            background: none; border: none;
+        }
+        .hamburger span {
+            display: block; width: 24px; height: 2px;
+            background: var(--white); border-radius: 2px;
+            transition: transform .3s, opacity .3s;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: rgba(5,15,9,.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 24px clamp(16px, 5vw, 32px) 32px;
+            border-bottom: 1px solid var(--border);
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            padding: 14px 0;
+            font-size: 17px; font-weight: 700;
+            color: var(--gray-1);
+            border-bottom: 1px solid rgba(255,255,255,.05);
+            transition: color .2s;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover { color: var(--accent); }
+        .mobile-menu .btn-primary {
+            margin-top: 16px;
+            justify-content: center;
+            font-size: 15px;
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════ */
+        #hero {
+            min-height: 100vh;
+            display: flex; align-items: center;
+            padding-top: clamp(80px, 12vw, 120px);
+            padding-bottom: clamp(40px, 6vw, 80px);
+            position: relative; overflow: hidden;
+        }
+        .glow-orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(100px); pointer-events: none;
+        }
+        .glow-orb-1 {
+            width: min(600px, 80vw); height: min(600px, 80vw);
+            background: rgba(0,250,105,.13);
+            top: -60px; right: -100px;
+            animation: floatOrb 9s ease-in-out infinite;
+        }
+        .glow-orb-2 {
+            width: min(400px, 60vw); height: min(400px, 60vw);
+            background: rgba(0,150,60,.08);
+            bottom: 0; left: -80px;
+            animation: floatOrb 11s ease-in-out infinite reverse;
+        }
+        @keyframes floatOrb {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-24px); }
+        }
+
+        /* Hero layout: two columns on large, single on small */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(32px, 5vw, 60px);
+            align-items: center;
+        }
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 7px 16px; border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(0,250,105,.07);
+            font-size: var(--fs-xs); font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: clamp(16px, 3vw, 24px);
+        }
+        .hero-headline {
+            font-size: var(--fs-2xl);
+            font-weight: 900; line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: clamp(16px, 3vw, 24px);
+        }
+        .hero-headline .green {
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(0,250,105,.45);
+        }
+        .hero-sub {
+            font-size: var(--fs-md);
+            color: var(--gray-2);
+            line-height: 1.75;
+            max-width: 480px;
+            margin-bottom: clamp(24px, 4vw, 36px);
+        }
+        .hero-actions {
+            display: flex; gap: 12px; flex-wrap: wrap;
+            margin-bottom: clamp(28px, 5vw, 48px);
+        }
+
+        /* Stats row */
+        .hero-stats {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .hero-stat {
+            background: var(--bg-card);
+            padding: clamp(16px, 3vw, 24px) clamp(12px, 2vw, 20px);
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+        .hero-stat:last-child { border-right: none; }
+        .hero-stat-num {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 900; color: var(--accent);
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-size: var(--fs-xs);
+            color: var(--gray-2); font-weight: 600;
+            margin-top: 4px; letter-spacing: 0.03em;
+        }
+
+        /* Hero Dashboard Visual */
+        .hero-visual { position: relative; z-index: 1; }
+        .dash-frame {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: clamp(18px, 3vw, 24px);
+            position: relative; overflow: hidden;
+        }
+        .dash-frame::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        .dash-topbar {
+            display: flex; align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .dash-title { font-size: var(--fs-sm); font-weight: 700; color: var(--gray-2); }
+        .dash-live {
+            display: flex; align-items: center; gap: 6px;
+            font-size: var(--fs-xs); color: var(--accent); font-weight: 700;
+        }
+        .live-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--accent);
+            animation: livePulse 1.6s ease-in-out infinite;
+        }
+        @keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+
+        .sensor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .sensor-chip {
+            background: var(--bg-mid);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: clamp(12px, 2vw, 16px);
+        }
+        .s-label { font-size: 10px; color: var(--gray-3); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+        .s-value { font-size: clamp(18px, 3vw, 24px); font-weight: 800; margin-top: 4px; }
+        .s-unit  { font-size: 12px; color: var(--gray-2); margin-left: 2px; }
+        .s-bar   { height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+        .s-fill  { height: 100%; background: var(--accent); border-radius: 2px; transition: width 1.2s ease; }
+
+        .ai-chip {
+            grid-column: 1/-1;
+            background: rgba(0,250,105,.07);
+            border: 1px solid rgba(0,250,105,.2);
+            border-radius: 12px;
+            padding: clamp(10px, 2vw, 14px) clamp(12px, 2vw, 16px);
+            display: flex; align-items: center; gap: 12px;
+        }
+        .ai-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: var(--accent); color: var(--bg-deep);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px; flex-shrink: 0;
+        }
+        .ai-main { font-size: var(--fs-sm); font-weight: 700; }
+        .ai-sub  { font-size: 11px; color: var(--gray-2); margin-top: 2px; }
+
+        /* ═══════════════════════════════════════════
+           PROBLEM & STRATEGY
+        ═══════════════════════════════════════════ */
+        .strategy-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(24px, 5vw, 60px);
+            margin-bottom: clamp(36px, 6vw, 56px);
+            align-items: start;
+        }
+        .strategy-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(16px, 2.5vw, 28px);
+        }
+        .strategy-card { display: flex; gap: 18px; flex-direction: column; }
+        .strategy-card .row { display: flex; gap: 18px; }
+
+        /* ═══════════════════════════════════════════
+           PRICING
+        ═══════════════════════════════════════════ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: clamp(14px, 2vw, 20px);
+            align-items: start;
+        }
+        .p-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: clamp(22px, 3vw, 32px) clamp(20px, 2.5vw, 28px);
+            display: flex; flex-direction: column;
+            position: relative;
+            transition: border-color .3s, box-shadow .3s;
+        }
+        .p-card:hover { border-color: rgba(0,250,105,.28); }
+        .p-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(170deg, rgba(0,250,105,.08) 0%, var(--bg-card) 40%);
+            box-shadow: 0 0 48px rgba(0,250,105,.12);
+        }
+        .featured-badge {
+            position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: var(--bg-deep);
+            font-size: 10px; font-weight: 800;
+            letter-spacing: .1em; text-transform: uppercase;
+            padding: 4px 18px; border-radius: 999px;
+            white-space: nowrap;
+        }
+        .p-emoji { font-size: 26px; margin-bottom: 10px; }
+        .p-name  { font-size: clamp(16px, 2vw, 19px); font-weight: 800; margin-bottom: 4px; }
+        .p-desc  { font-size: var(--fs-xs); color: var(--gray-2); line-height: 1.55; min-height: 44px; margin-bottom: 18px; }
+        .p-amount { font-size: clamp(32px, 5vw, 42px); font-weight: 900; line-height: 1; }
+        .p-amount.green { color: var(--accent); }
+        .p-period { font-size: var(--fs-sm); color: var(--gray-2); }
+        .p-setup  { font-size: var(--fs-xs); color: var(--gray-2); margin-top: 6px; margin-bottom: 18px; }
+        .p-setup strong { color: var(--white); }
+        .p-divider { height: 1px; background: var(--border); margin-bottom: 18px; }
+        .p-feats { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .p-feat {
+            display: flex; align-items: flex-start; gap: 9px;
+            font-size: var(--fs-xs); color: var(--gray-1); line-height: 1.4;
+        }
+        .p-feat .ok  { color: var(--accent); margin-top: 2px; font-size: 11px; flex-shrink: 0; }
+        .p-feat .no  { color: var(--gray-3); margin-top: 2px; font-size: 11px; flex-shrink: 0; }
+        .p-feat .no + span { opacity: .4; }
+        .p-quota {
+            margin-top: 18px; padding: 12px 14px;
+            background: rgba(0,250,105,.06);
+            border: 1px solid rgba(0,250,105,.14);
+            border-radius: 12px; font-size: var(--fs-xs);
+        }
+        .p-quota span { color: var(--accent); font-weight: 700; }
+        .p-quota .dim { color: var(--gray-2); }
+
+        /* ═══════════════════════════════════════════
+           REVENUE STREAMS
+        ═══════════════════════════════════════════ */
+        .streams-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: clamp(16px, 2.5vw, 24px);
+        }
+        .stream-card { display: flex; gap: 16px; }
+        .stream-num {
+            width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+            background: rgba(0,250,105,.1); border: 1px solid rgba(0,250,105,.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 800; color: var(--accent);
+        }
+        .stream-num.dim { background: transparent; border-color: var(--border); color: var(--gray-3); }
+        .stream-title { font-size: clamp(15px, 2vw, 17px); font-weight: 800; margin-bottom: 6px; }
+        .stream-text  { font-size: var(--fs-sm); color: var(--gray-2); line-height: 1.7; }
+
+        /* ═══════════════════════════════════════════
+           GUARANTEE
+        ═══════════════════════════════════════════ */
+        .guarantee-box {
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: var(--r-xl);
+            padding: clamp(32px, 5vw, 60px);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: clamp(28px, 4vw, 48px);
+            align-items: center;
+            position: relative; overflow: hidden;
+        }
+        .guarantee-box::after {
+            content: '';
+            position: absolute; top: 0; right: 0;
+            width: 45%; height: 100%;
+            background: radial-gradient(ellipse at right center, rgba(0,250,105,.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .g-icon-wrap {
+            width: clamp(72px, 10vw, 100px);
+            height: clamp(72px, 10vw, 100px);
+            border-radius: 24px;
+            background: rgba(0,250,105,.1);
+            border: 1px solid rgba(0,250,105,.28);
+            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(30px, 5vw, 44px); color: var(--accent);
+            flex-shrink: 0;
+        }
+        .g-title { font-size: clamp(20px, 3vw, 30px); font-weight: 900; margin-bottom: 12px; }
+        .g-text  { font-size: var(--fs-md); color: var(--gray-2); line-height: 1.75; }
+        .g-text strong { color: var(--white); }
+        .g-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+        .g-pill {
+            display: flex; align-items: center; gap: 7px;
+            background: rgba(0,250,105,.06);
+            border: 1px solid rgba(0,250,105,.18);
+            border-radius: 999px; padding: 7px 14px;
+            font-size: var(--fs-xs); font-weight: 600;
+        }
+        .g-pill i { color: var(--accent); }
+
+        /* ═══════════════════════════════════════════
+           AI ROADMAP
+        ═══════════════════════════════════════════ */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: clamp(16px, 2.5vw, 24px);
+        }
+        .rm-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: clamp(24px, 4vw, 36px) clamp(22px, 3vw, 32px);
+            position: relative; overflow: hidden;
+            transition: border-color .3s;
+        }
+        .rm-card.active { border-color: var(--accent); }
+        .rm-card.active::before {
+            content: ''; position: absolute; top:0; left:0; right:0; height:3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dim));
+        }
+        .rm-phase { font-size: var(--fs-xs); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+        .rm-phase.live { color: var(--accent); }
+        .rm-phase.dim  { color: var(--gray-3); }
+        .rm-title { font-size: clamp(18px, 2.5vw, 22px); font-weight: 800; margin-bottom: 10px; }
+        .rm-text  { font-size: var(--fs-sm); color: var(--gray-2); line-height: 1.7; }
+        .rm-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 20px; padding: 8px 14px;
+            border-radius: 10px; font-size: var(--fs-xs); font-weight: 700;
+        }
+        .rm-badge.green { background: rgba(0,250,105,.07); border: 1px solid rgba(0,250,105,.18); color: var(--accent); }
+        .rm-badge.dim   { background: transparent; border: 1px solid var(--border); color: var(--gray-3); }
+
+        /* ═══════════════════════════════════════════
+           GO-TO-MARKET
+        ═══════════════════════════════════════════ */
+        .gtm-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 2px;
+            background: var(--border);
+            border-radius: var(--r-xl);
+            overflow: hidden;
+        }
+        .gtm-card { background: var(--bg-card); padding: clamp(28px, 4vw, 44px) clamp(24px, 3vw, 36px); }
+        .gtm-num   { font-size: clamp(56px, 8vw, 90px); font-weight: 900; color: rgba(0,250,105,.07); line-height: 1; margin-bottom: 14px; letter-spacing: -.04em; }
+        .gtm-label { font-size: var(--fs-xs); color: var(--accent); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+        .gtm-title { font-size: clamp(18px, 2.5vw, 23px); font-weight: 800; margin-bottom: 10px; }
+        .gtm-text  { font-size: var(--fs-sm); color: var(--gray-2); line-height: 1.7; }
+
+        /* ═══════════════════════════════════════════
+           VALIDATION & TEAM
+        ═══════════════════════════════════════════ */
+        .val-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(32px, 6vw, 64px);
+            align-items: start;
+        }
+        .score-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: clamp(24px, 4vw, 36px);
+            display: flex; align-items: center;
+            gap: clamp(16px, 3vw, 24px);
+            margin-bottom: 24px;
+        }
+        .score-big { font-size: clamp(52px, 8vw, 72px); font-weight: 900; color: var(--accent); line-height: 1; text-shadow: 0 0 30px rgba(0,250,105,.4); }
+        .score-label { font-size: clamp(17px, 2.5vw, 20px); font-weight: 800; margin-bottom: 4px; }
+        .score-sub   { font-size: var(--fs-sm); color: var(--gray-2); line-height: 1.55; }
+
+        .sup-label { font-size: var(--fs-xs); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-3); margin-bottom: 14px; }
+        .supervisors { display: flex; flex-direction: column; gap: 10px; }
+        .sup-card {
+            display: flex; align-items: center; gap: 14px;
+            padding: clamp(12px, 2vw, 16px) clamp(14px, 2vw, 18px);
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .sup-icon {
+            width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+            background: rgba(0,250,105,.08);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent); font-size: 14px;
+        }
+        .sup-name { font-size: clamp(14px, 2vw, 15px); font-weight: 600; }
+        .sup-role { font-size: var(--fs-xs); color: var(--gray-3); margin-top: 2px; }
+
+        .team-cards { display: flex; flex-direction: column; gap: 12px; }
+        .team-card {
+            display: flex; align-items: center; gap: 16px;
+            padding: clamp(14px, 2.5vw, 20px) clamp(16px, 2.5vw, 22px);
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: border-color .3s;
+        }
+        .team-card:hover { border-color: rgba(0,250,105,.3); }
+        .avatar {
+            width: clamp(48px, 7vw, 56px);
+            height: clamp(48px, 7vw, 56px);
+            border-radius: 14px;
+            background: linear-gradient(135deg, #0a2416, #0e3020);
+            border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-size: clamp(14px, 2vw, 17px); font-weight: 800; color: var(--accent);
+            flex-shrink: 0;
+        }
+        .team-name { font-size: clamp(15px, 2vw, 16px); font-weight: 700; }
+
+        /* ═══════════════════════════════════════════
+           CONTACT / FOOTER
+        ═══════════════════════════════════════════ */
+        #contact {
+            padding: clamp(70px, 12vw, 110px) 0 clamp(40px, 6vw, 70px);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        #contact::before {
+            content: ''; position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: min(700px, 90vw); height: min(700px, 90vw);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,250,105,.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .contact-title { font-size: var(--fs-xl); font-weight: 900; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 14px; }
+        .contact-sub   { font-size: var(--fs-md); color: var(--gray-2); margin-bottom: clamp(28px, 5vw, 40px); }
+        .contact-btns  { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+        .footer-bar {
+            margin-top: clamp(48px, 8vw, 80px);
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 12px; flex-wrap: wrap;
+        }
+        .footer-logo { font-size: clamp(16px, 2.5vw, 20px); font-weight: 900; letter-spacing: .06em; }
+        .footer-logo span { color: var(--accent); }
+        .footer-copy  { font-size: var(--fs-xs); color: var(--gray-3); }
+
+        /* ═══════════════════════════════════════════
+           FADE-IN ANIMATION
+        ═══════════════════════════════════════════ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .55s ease, transform .55s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE BREAKPOINTS
+        ═══════════════════════════════════════════ */
+
+        /* ── tablet: ≤ 1024px ── */
+        @media (max-width: 1024px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-grid    { grid-template-columns: 1fr; }
+            .hero-visual  { display: none; }
+            .hero-sub     { max-width: 100%; }
+        }
+
+        /* ── small-tablet: ≤ 768px ── */
+        @media (max-width: 768px) {
+            /* Nav */
+            .nav-links  { display: none; }
+            .hamburger  { display: flex; }
+
+            /* Sections */
+            .section    { padding: clamp(48px, 9vw, 72px) 0; }
+            .section-sm { padding: clamp(32px, 7vw, 56px) 0; }
+
+            /* Hero */
+            .hero-actions { justify-content: center; }
+            .hero-content { text-align: center; }
+            .hero-tag      { margin-left: auto; margin-right: auto; display: inline-flex; }
+
+            /* Strategy */
+            .strategy-intro { grid-template-columns: 1fr; gap: 20px; }
+            .strategy-cards { grid-template-columns: 1fr; }
+
+            /* Pricing: already 2-col at 1024, keep 1-col at 768 */
+            .pricing-grid   { grid-template-columns: 1fr; }
+
+            /* Revenue */
+            .streams-grid   { grid-template-columns: 1fr; }
+
+            /* Guarantee */
+            .guarantee-box  { grid-template-columns: 1fr; text-align: center; }
+            .g-icon-wrap    { margin: 0 auto; }
+            .g-pills        { justify-content: center; }
+
+            /* Roadmap */
+            .roadmap-grid   { grid-template-columns: 1fr; }
+
+            /* GTM */
+            .gtm-grid { grid-template-columns: 1fr; background: none; border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; gap: 0; }
+            .gtm-card { border-bottom: 1px solid var(--border); }
+            .gtm-card:last-child { border-bottom: none; }
+
+            /* Validation */
+            .val-grid { grid-template-columns: 1fr; gap: 40px; }
+
+            /* Footer */
+            .footer-bar { justify-content: center; text-align: center; }
+        }
+
+        /* ── mobile: ≤ 480px ── */
+        @media (max-width: 480px) {
+            .pricing-grid   { grid-template-columns: 1fr; }
+            .hero-stats     { grid-template-columns: repeat(3,1fr); }
+            .contact-btns   { flex-direction: column; align-items: stretch; }
+            .contact-btns .btn { justify-content: center; }
+            .hero-actions   { flex-direction: column; align-items: stretch; }
+            .hero-actions .btn { justify-content: center; }
+            .g-pills        { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ═══════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <div class="nav-logo">GHUSUN<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#strategy">Problem</a></li>
+            <li><a href="#pricing">Business Model</a></li>
+            <li><a href="#roadmap">AI Roadmap</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact" class="btn btn-primary nav-cta">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#strategy"  onclick="closeMenu()">Problem</a>
+    <a href="#pricing"   onclick="closeMenu()">Business Model</a>
+    <a href="#roadmap"   onclick="closeMenu()">AI Roadmap</a>
+    <a href="#team"      onclick="closeMenu()">Team</a>
+    <a href="#contact" class="btn btn-primary" onclick="closeMenu()">Contact Us</a>
+</div>
+
+<!-- ══ HERO ═════════════════════════════════════════════════════════════ -->
+<section id="hero">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="container">
+        <div class="hero-grid">
+
+            <!-- Left: content -->
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <i class="fa-solid fa-leaf"></i>
+                    KASIT · University of Jordan · 98/100
+                </div>
+                <h1 class="hero-headline">
+                    AI-Powered Smart<br>
+                    <span class="green">Greenhouse</span><br>
+                    Management
+                </h1>
+                <p class="hero-sub">
+                    Automating agriculture for Jordan and the MENA region at a fraction of enterprise cost. Seeking partnership, pilot access, and mentorship.
+                </p>
+                <div class="hero-actions">
+                    <a href="#pricing" class="btn btn-primary">
+                        <i class="fa-solid fa-chart-line"></i> View Business Model
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fa-solid fa-envelope"></i> Contact Founders
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">4</div>
+                        <div class="hero-stat-label">Pricing Tiers</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">3</div>
+                        <div class="hero-stat-label">Revenue Streams</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">3</div>
+                        <div class="hero-stat-label">Growth Phases</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: live dashboard mockup -->
+            <div class="hero-visual fade-up">
+                <div class="dash-frame">
+                    <div class="dash-topbar">
+                        <span class="dash-title">GHUSUN Dashboard — Zone A</span>
+                        <span class="dash-live"><span class="live-dot"></span> AI Active</span>
+                    </div>
+                    <div class="sensor-grid">
+                        <div class="sensor-chip">
+                            <div class="s-label">Temperature</div>
+                            <div class="s-value">26<span class="s-unit">°C</span></div>
+                            <div class="s-bar"><div class="s-fill" style="width:65%"></div></div>
+                        </div>
+                        <div class="sensor-chip">
+                            <div class="s-label">Humidity</div>
+                            <div class="s-value">71<span class="s-unit">%</span></div>
+                            <div class="s-bar"><div class="s-fill" style="width:71%"></div></div>
+                        </div>
+                        <div class="sensor-chip">
+                            <div class="s-label">Soil Moisture</div>
+                            <div class="s-value" style="color:var(--accent)">Ideal</div>
+                            <div class="s-bar"><div class="s-fill" style="width:55%"></div></div>
+                        </div>
+                        <div class="sensor-chip">
+                            <div class="s-label">Light</div>
+                            <div class="s-value">4,820<span class="s-unit">lx</span></div>
+                            <div class="s-bar"><div class="s-fill" style="width:82%"></div></div>
+                        </div>
+                        <div class="ai-chip">
+                            <div class="ai-icon"><i class="fa-solid fa-brain"></i></div>
+                            <div>
+                                <div class="ai-main">AI Decision: No action needed</div>
+                                <div class="ai-sub">Confidence 94% · All systems optimal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PROBLEM & STRATEGY ════════════════════════════════════════════════ -->
+<section id="strategy" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+    <div class="container">
+        <div class="strategy-intro">
+            <div>
+                <p class="label">The Problem</p>
+                <h2 class="heading">Farmers Are Left Behind</h2>
+                <p class="subtext">Enterprise smart-farming systems cost thousands of dollars and require dedicated technical staff — leaving small Jordanian farmers unable to afford automation.</p>
+            </div>
+            <div style="padding-top:4px">
+                <p class="label">Our Answer</p>
+                <h2 class="heading" style="font-size:clamp(24px,4vw,38px)">Two Paths. Zero Friction.</h2>
+                <p class="subtext">We meet the farmer exactly where they are — no infrastructure destruction required, installation in hours.</p>
+            </div>
+        </div>
+        <div class="strategy-cards">
+            <div class="card fade-up" style="display:flex;gap:18px;">
+                <div class="icon-box"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+                <div>
+                    <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:10px;">Option A — Retrofit Mode</h3>
+                    <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">We connect smart relay switches to the farmer's existing pumps and fans. If they have a manual button for ventilation, a relay sits inline and GHUSUN "presses" it digitally — zero infrastructure destruction.</p>
+                    <div class="check-list">
+                        <div class="check-item"><i class="fa-solid fa-check"></i> 2–4 hour installation</div>
+                        <div class="check-item"><i class="fa-solid fa-check"></i> No hardware replacement</div>
+                        <div class="check-item"><i class="fa-solid fa-check"></i> Lowest barrier to entry</div>
+                        <div class="check-item"><i class="fa-solid fa-check"></i> Ideal for existing greenhouses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card fade-up" style="display:flex;gap:18px;">
+                <div class="icon-box"><i class="fa-solid fa-box-open"></i></div>
+                <div>
+                    <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:10px;">Option B — Full Turnkey Kit</h3>
+                    <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">GHUSUN provides the complete hardware stack — ESP32-S3 controller, sensor array, irrigation pump, ventilation fan, and LED grow lights — all pre-wired, tested, and installed by our team.</p>
+                    <div class="check-list">
+                        <div class="check-item"><i class="fa-solid fa-check"></i> Pre-wired and tested</div>
+                        <div class="check-item"><i class="fa-solid fa-check"></i> On-site installation</div>
+                        <div class="check-item"><i class="fa-solid fa-check"></i> Weatherproof enclosure</div>
+                        <div class="check-item"><i class="fa-solid fa-check"></i> Higher revenue per customer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PRICING ══════════════════════════════════════════════════════════ -->
+<section id="pricing" class="section" style="border-top:1px solid var(--border)">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Business Model</p>
+            <h2 class="heading">Four Plans. One Scalable System.</h2>
+            <p class="subtext" style="margin:14px auto 0;text-align:center;max-width:600px">Hardware revenue upfront. Recurring SaaS revenue every month. As the user base grows, per-user costs shrink while revenue scales linearly.</p>
+        </div>
+        <div class="pricing-grid">
+
+            <!-- Seedling -->
+            <div class="p-card fade-up">
+                <div class="p-emoji">🌱</div>
+                <div class="p-name">Seedling</div>
+                <div class="p-desc">Students, individual trials, and first-time users. Build trust with zero risk.</div>
+                <div class="p-amount">0</div>
+                <div class="p-period">JOD / month</div>
+                <div class="p-setup">Free forever — monitoring only</div>
+                <div class="p-divider"></div>
+                <div class="p-feats">
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Real-time sensor dashboard</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Basic alerts via app</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 1 greenhouse zone</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 7-day data history</div>
+                    <div class="p-feat"><i class="fa-solid fa-xmark no"></i> <span>No AI decisions</span></div>
+                    <div class="p-feat"><i class="fa-solid fa-xmark no"></i> <span>No actuator control</span></div>
+                </div>
+                <div class="p-quota" style="margin-top:auto;margin-top:18px;border-color:var(--border);background:transparent">
+                    <i class="fa-solid fa-circle-info" style="color:var(--gray-3)"></i>
+                    <span class="dim"> Self-sourced sensors required</span>
+                </div>
+            </div>
+
+            <!-- Grower -->
+            <div class="p-card fade-up">
+                <div class="p-emoji">🌿</div>
+                <div class="p-name">Grower</div>
+                <div class="p-desc">Small farmer with one greenhouse. Retrofit hardware integration.</div>
+                <div class="p-amount">25</div>
+                <div class="p-period">JOD / month</div>
+                <div class="p-setup"><strong>390 JOD</strong> one-time hardware setup</div>
+                <div class="p-divider"></div>
+                <div class="p-feats">
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Full dashboard + actuator control</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 2 greenhouse zones</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 30-day data history</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> SMS + app alerts</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Plant profiles (Mint, Basil)</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Email support — 48hr</div>
+                </div>
+                <div class="p-quota">
+                    <i class="fa-solid fa-brain" style="color:var(--accent)"></i>
+                    <span> 200 AI decisions/month</span><br>
+                    <span class="dim">Overage: 0.05 JOD per decision</span>
+                </div>
+            </div>
+
+            <!-- Pro Farm (Featured) -->
+            <div class="p-card featured fade-up">
+                <div class="featured-badge">Recommended</div>
+                <div class="p-emoji" style="margin-top:10px">🌳</div>
+                <div class="p-name">Pro Farm</div>
+                <div class="p-desc">Serious multi-zone operation. Full turnkey automation kit.</div>
+                <div class="p-amount green">55</div>
+                <div class="p-period">JOD / month</div>
+                <div class="p-setup"><strong>850 JOD</strong> full turnkey kit setup</div>
+                <div class="p-divider" style="background:rgba(0,250,105,.2)"></div>
+                <div class="p-feats">
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Full hardware kit (pump, fan, LEDs)</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Unlimited zones</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 90-day history + data export</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Predictive alerts</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Custom plant profiles</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 1-year hardware warranty</div>
+                </div>
+                <div class="p-quota">
+                    <i class="fa-solid fa-brain" style="color:var(--accent)"></i>
+                    <span> 1,000 AI decisions/month</span><br>
+                    <span class="dim">Seasonal optimization included</span>
+                </div>
+            </div>
+
+            <!-- Cooperative -->
+            <div class="p-card fade-up">
+                <div class="p-emoji">🏭</div>
+                <div class="p-name">Cooperative</div>
+                <div class="p-desc">Agricultural co-ops, institutions, and B2G investors.</div>
+                <div class="p-amount" style="font-size:clamp(24px,4vw,34px)">Custom</div>
+                <div class="p-period">Quote-based</div>
+                <div class="p-setup">Contact GHUSUN for pricing</div>
+                <div class="p-divider"></div>
+                <div class="p-feats">
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Multi-farm management</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Unlimited zones across all farms</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Full API access</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Custom reporting (Ministry/NGO)</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> White-label option</div>
+                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Dedicated account manager</div>
+                </div>
+                <div class="p-quota">
+                    <i class="fa-solid fa-infinity" style="color:var(--accent)"></i>
+                    <span> Unlimited AI decisions</span><br>
+                    <span class="dim">Aggregated cross-farm insights</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ REVENUE STREAMS ══════════════════════════════════════════════════ -->
+<section class="section-sm" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+    <div class="container">
+        <div style="margin-bottom:clamp(28px,5vw,44px)">
+            <p class="label">How We Make Money</p>
+            <h2 class="heading">Three Revenue Streams, One Product</h2>
+        </div>
+        <div class="streams-grid">
+            <div class="card stream-card fade-up">
+                <div class="stream-num">01</div>
+                <div>
+                    <div class="stream-title">Hardware Sales</div>
+                    <div class="stream-text">One-time revenue from the GHUSUN controller, sensor kits, and optional full actuator kit. Healthy margin built above raw component cost. Retrofit kits are lower cost but higher volume.</div>
+                </div>
+            </div>
+            <div class="card stream-card fade-up">
+                <div class="stream-num">02</div>
+                <div>
+                    <div class="stream-title">SaaS Subscription</div>
+                    <div class="stream-text">Monthly recurring revenue from software access, AI decision quotas, dashboard features, and support tiers. Per-user backend costs decrease as the user base grows — revenue scales linearly.</div>
+                </div>
+            </div>
+            <div class="card stream-card fade-up">
+                <div class="stream-num">03</div>
+                <div>
+                    <div class="stream-title">AI Overage & Add-ons</div>
+                    <div class="stream-text">Pay-per-use revenue when farmers exceed their AI quota. Additional plant profiles, advanced analytics exports, and custom reporting for cooperatives or government partners.</div>
+                </div>
+            </div>
+            <div class="card stream-card fade-up" style="opacity:.7;border-color:rgba(0,250,105,.05)">
+                <div class="stream-num dim">04</div>
+                <div>
+                    <div class="stream-title" style="color:var(--gray-2)">Data & Partnerships <span style="font-size:11px;color:var(--gray-3);font-weight:600"> — Future</span></div>
+                    <div class="stream-text">As GHUSUN accumulates anonymized farm data across Jordan, this dataset becomes valuable to seed companies, the Ministry of Agriculture, and NGOs like FAO — a realistic long-term B2G channel.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ GUARANTEE ════════════════════════════════════════════════════════ -->
+<section class="section-sm" style="border-top:1px solid var(--border)">
+    <div class="container">
+        <div class="guarantee-box fade-up">
+            <div class="g-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+                <h3 class="g-title">The 60-Day GHUSUN Guarantee</h3>
+                <p class="g-text">We price for premium quality because <strong>we carry the risk</strong>. If GHUSUN doesn't work for a farm within 60 days, we come, remove our hardware, and refund <strong>50% of the hardware cost</strong> — no questions asked.</p>
+                <div class="g-pills">
+                    <div class="g-pill"><i class="fa-solid fa-check"></i> 50% hardware refund</div>
+                    <div class="g-pill"><i class="fa-solid fa-check"></i> Free hardware pickup</div>
+                    <div class="g-pill"><i class="fa-solid fa-check"></i> Full subscription refund</div>
+                    <div class="g-pill"><i class="fa-solid fa-check"></i> Valid for Grower & Pro Farm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ AI ROADMAP ════════════════════════════════════════════════════════ -->
+<section id="roadmap" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Technical Moat</p>
+            <h2 class="heading">From Cloud LLM to Local Intelligence</h2>
+            <p class="subtext" style="margin:14px auto 0;text-align:center;max-width:580px">Our AI roadmap systematically eliminates ongoing API costs while building a Jordanian agricultural model no enterprise system can replicate.</p>
+        </div>
+        <div class="roadmap-grid">
+            <div class="rm-card active fade-up">
+                <div class="rm-phase live">Phase 1 — Current</div>
+                <h3 class="rm-title">Cloud AI API</h3>
+                <p class="rm-text">Powered by OpenAI API (GPT-4o-mini). Agentic reasoning with confidence scores and severity levels. Cost-effective at small scale — the right approach for early deployment.</p>
+                <div class="rm-badge green"><i class="fa-solid fa-circle-dot"></i> Live & Running</div>
+            </div>
+            <div class="rm-card fade-up">
+                <div class="rm-phase dim">Phase 2 — 1–2 Years</div>
+                <h3 class="rm-title">Fine-Tuned Model</h3>
+                <p class="rm-text">LLM-generated decisions become labeled training data. A lightweight model (LSTM or TinyLLaMA) trained on GHUSUN-specific Jordanian agricultural data runs on our own servers.</p>
+                <div class="rm-badge dim"><i class="fa-solid fa-arrow-trend-down"></i> 10–50× cost reduction</div>
+            </div>
+            <div class="rm-card fade-up">
+                <div class="rm-phase dim">Phase 3 — 3+ Years</div>
+                <h3 class="rm-title">Local On-Device AI</h3>
+                <p class="rm-text">LLaMA-based model deployed locally on each farm. No internet required. Full data privacy. Zero ongoing API costs. A Jordan-specific AI that no enterprise system currently offers.</p>
+                <div class="rm-badge dim"><i class="fa-solid fa-lock"></i> Full data sovereignty</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ GO-TO-MARKET ══════════════════════════════════════════════════════ -->
+<section id="gtm" class="section" style="border-top:1px solid var(--border)">
+    <div class="container">
+        <div style="margin-bottom:clamp(36px,6vw,52px)">
+            <p class="label">Go-to-Market</p>
+            <h2 class="heading">Three Phases to Scale</h2>
+        </div>
+        <div class="gtm-grid">
+            <div class="gtm-card fade-up">
+                <div class="gtm-num">01</div>
+                <div class="gtm-label">Now — 12 Months</div>
+                <h3 class="gtm-title">Prove It</h3>
+                <p class="gtm-text">Deploy 5–10 pilot units with real farmers near Amman and the Jordan Valley. Offer the free Seedling tier to build trust. Founders handle all installation personally. Target: first 3 paying Grower-tier customers.</p>
+            </div>
+            <div class="gtm-card fade-up">
+                <div class="gtm-num">02</div>
+                <div class="gtm-label">Year 1–2</div>
+                <h3 class="gtm-title">Grow It</h3>
+                <p class="gtm-text">Partner with 1–2 agricultural cooperatives for bulk deployment. Apply for Ministry of Agriculture and Royal Scientific Society grants. Launch Pro Farm tier with full hardware kit. Target: 50–100 active subscriptions.</p>
+            </div>
+            <div class="gtm-card fade-up">
+                <div class="gtm-num">03</div>
+                <div class="gtm-label">Year 3+</div>
+                <h3 class="gtm-title">Scale It</h3>
+                <p class="gtm-text">Deploy local LLaMA AI — eliminate ongoing API costs. Expand to the MENA region: Saudi Arabia, Iraq, Palestine. Launch white-label Cooperative tier. Monetize anonymized farm data. Target: 500+ active farms.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ VALIDATION & TEAM ════════════════════════════════════════════════ -->
+<section id="team" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+    <div class="container">
+        <div style="margin-bottom:clamp(36px,6vw,52px)">
+            <p class="label">Validation & Team</p>
+            <h2 class="heading">Built with Rigor, Led by Engineers</h2>
+        </div>
+        <div class="val-grid">
+
+            <!-- Left: Validation -->
+            <div>
+                <div class="score-box fade-up">
+                    <div class="score-big">98</div>
+                    <div>
+                        <div class="score-label">Top IT Project Score</div>
+                        <div class="score-sub">King Abdullah II School of Information Technology<br>University of Jordan (KASIT)</div>
+                    </div>
+                </div>
+                <p class="sup-label">Supervising Faculty</p>
+                <div class="supervisors">
+                    <div class="sup-card fade-up">
+                        <div class="sup-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div>
+                            <div class="sup-name">Dr. Bashar Al-Shboul</div>
+                            <div class="sup-role">IT Faculty, University of Jordan</div>
+                        </div>
+                    </div>
+                    <div class="sup-card fade-up">
+                        <div class="sup-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div>
+                            <div class="sup-name">Dr. Dana Qudah</div>
+                            <div class="sup-role">IT Faculty, University of Jordan</div>
+                        </div>
+                    </div>
+                    <div class="sup-card fade-up">
+                        <div class="sup-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div>
+                            <div class="sup-name">Dr. Basima Elshqeirat</div>
+                            <div class="sup-role">IT Faculty, University of Jordan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Team -->
+            <div>
+                <p class="sup-label">The Founding Team</p>
+                <div class="team-cards">
+                    <div class="team-card fade-up">
+                        <div class="avatar">AZ</div>
+                        <div class="team-name">Abdalhadi Zatar</div>
+                    </div>
+                    <div class="team-card fade-up">
+                        <div class="avatar">ST</div>
+                        <div class="team-name">Saba Tell</div>
+                    </div>
+                    <div class="team-card fade-up">
+                        <div class="avatar">SS</div>
+                        <div class="team-name">Sara Shawagfeh</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT / FOOTER ═════════════════════════════════════════════════ -->
+<section id="contact">
+    <div class="container">
+        <h2 class="contact-title">Ready to modernize<br>Jordanian agriculture?</h2>
+        <p class="contact-sub">Seeking strategic partnerships and early-access pilots across Jordan.</p>
+        <div class="contact-btns">
+            <a href="mailto:contact@ghusun.com" class="btn btn-primary">
+                <i class="fa-solid fa-envelope"></i> Email Us
+            </a>
+            <a href="#" class="btn btn-outline">
+                <i class="fa-solid fa-file-arrow-down"></i> Download Pitch Deck
+            </a>
+        </div>
+        <div class="footer-bar">
+            <div class="footer-logo">GHUSUN<span>.</span></div>
+            <div class="footer-copy">© 2026 GHUSUN · Built in Jordan · KASIT, University of Jordan</div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ SCRIPTS ══════════════════════════════════════════════════════════ -->
+<script>
+    /* ── Navbar scroll ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ── Mobile menu ── */
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+    });
+    function closeMenu() {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+    }
+
+    /* ── Intersection observer: fade-up ── */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+        el.style.transitionDelay = `${(i % 4) * 80}ms`;
+        io.observe(el);
+    });
+
+    /* ── Animate sensor bars on load ── */
+    window.addEventListener('load', () => {
+        document.querySelectorAll('.s-fill').forEach(bar => {
+            const target = bar.style.width;
+            bar.style.width = '0';
+            requestAnimationFrame(() => {
+                setTimeout(() => { bar.style.width = target; }, 400);
+            });
+        });
+    });
+</script>
+</body>
+</html>
