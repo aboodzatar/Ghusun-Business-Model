@@ -182,16 +182,24 @@
             height: 64px;
         }
         .nav-logo {
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; gap: 12px;
             font-size: clamp(17px, 2.5vw, 21px);
             font-weight: 900; letter-spacing: 0.06em;
             text-decoration: none; color: var(--white);
         }
-        .nav-logo img {
-            height: clamp(32px, 5vw, 42px);
+        .nav-logo-img-wrap {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 5px 8px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 12px rgba(0,250,105,0.25);
+        }
+        .nav-logo-img-wrap img {
+            height: clamp(38px, 6vw, 52px);
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 6px rgba(0,250,105,0.3));
+            display: block;
         }
         .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
         .nav-logo-en { font-size: clamp(16px, 2.5vw, 20px); font-weight: 900; letter-spacing: 0.06em; }
@@ -779,7 +787,9 @@
 <nav id="navbar">
     <div class="nav-inner">
         <a href="#" class="nav-logo">
-            <img src="logo.png" alt="GHUSUN Logo">
+            <div class="nav-logo-img-wrap">
+                <img src="logo.png" alt="GHUSUN Logo">
+            </div>
             <div class="nav-logo-text">
                 <span class="nav-logo-en">GHUSUN</span>
                 <span class="nav-logo-ar">غصن</span>
@@ -815,7 +825,9 @@
             <!-- Left: content -->
             <div class="hero-content">
                 <div style="display:flex;align-items:center;gap:clamp(16px,3vw,28px);margin-bottom:clamp(16px,3vw,28px);flex-wrap:wrap;">
-                    <img src="logo.png" alt="GHUSUN Logo" style="height:clamp(56px,9vw,80px);width:auto;object-fit:contain;filter:drop-shadow(0 0 16px rgba(0,250,105,0.35));flex-shrink:0;">
+                    <div style="background:#ffffff;border-radius:20px;padding:clamp(10px,2vw,16px) clamp(12px,2.5vw,20px);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 24px rgba(0,250,105,0.3),0 0 0 1px rgba(0,250,105,0.15);">
+                        <img src="logo.png" alt="GHUSUN Logo" style="height:clamp(80px,13vw,130px);width:auto;object-fit:contain;display:block;">
+                    </div>
                     <div>
                         <div style="font-size:clamp(32px,6vw,56px);font-weight:900;line-height:1;letter-spacing:-0.02em;">GHUSUN</div>
                         <div style="font-size:clamp(18px,3vw,26px);color:var(--accent);font-weight:700;direction:rtl;letter-spacing:0.02em;">غصن</div>
@@ -1254,8 +1266,10 @@
             </a>
         </div>
         <div class="footer-bar">
-            <div style="display:flex;align-items:center;gap:10px;">
-                <img src="logo.png" alt="GHUSUN" style="height:32px;width:auto;filter:drop-shadow(0 0 6px rgba(0,250,105,0.3));">
+            <div style="display:flex;align-items:center;gap:14px;">
+                <div style="background:#ffffff;border-radius:12px;padding:6px 10px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,250,105,0.2);">
+                    <img src="logo.png" alt="GHUSUN" style="height:44px;width:auto;object-fit:contain;display:block;">
+                </div>
                 <div>
                     <div class="footer-logo" style="font-size:clamp(15px,2.5vw,18px);font-weight:900;letter-spacing:0.06em;">GHUSUN <span style="color:var(--accent)">·</span> <span style="color:var(--accent);font-size:0.85em;direction:rtl;">غصن</span></div>
                 </div>
