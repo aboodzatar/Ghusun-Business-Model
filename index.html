@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHUSUN — AI-Powered Smart Greenhouse Management</title>
+    <title>GHUSUN | غصن — AI-Powered Smart Greenhouse Management</title>
     <meta name="description" content="GHUSUN is an AI-powered smart greenhouse management system for Jordan and the MENA region. Seeking partnership, pilot access, and mentorship.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -182,10 +182,26 @@
             height: 64px;
         }
         .nav-logo {
-            font-size: clamp(18px, 3vw, 22px);
+            display: flex; align-items: center; gap: 10px;
+            font-size: clamp(17px, 2.5vw, 21px);
             font-weight: 900; letter-spacing: 0.06em;
+            text-decoration: none; color: var(--white);
         }
-        .nav-logo span { color: var(--accent); }
+        .nav-logo img {
+            height: clamp(32px, 5vw, 42px);
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px rgba(0,250,105,0.3));
+        }
+        .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+        .nav-logo-en { font-size: clamp(16px, 2.5vw, 20px); font-weight: 900; letter-spacing: 0.06em; }
+        .nav-logo-ar {
+            font-size: clamp(11px, 1.8vw, 13px);
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            direction: rtl;
+        }
 
         /* Desktop links */
         .nav-links {
@@ -762,7 +778,13 @@
 <!-- ══ NAVBAR ═══════════════════════════════════════════════════════════ -->
 <nav id="navbar">
     <div class="nav-inner">
-        <div class="nav-logo">GHUSUN<span>.</span></div>
+        <a href="#" class="nav-logo">
+            <img src="logo.png" alt="GHUSUN Logo">
+            <div class="nav-logo-text">
+                <span class="nav-logo-en">GHUSUN</span>
+                <span class="nav-logo-ar">غصن</span>
+            </div>
+        </a>
         <ul class="nav-links">
             <li><a href="#strategy">Problem</a></li>
             <li><a href="#pricing">Business Model</a></li>
@@ -792,6 +814,13 @@
 
             <!-- Left: content -->
             <div class="hero-content">
+                <div style="display:flex;align-items:center;gap:clamp(16px,3vw,28px);margin-bottom:clamp(16px,3vw,28px);flex-wrap:wrap;">
+                    <img src="logo.png" alt="GHUSUN Logo" style="height:clamp(56px,9vw,80px);width:auto;object-fit:contain;filter:drop-shadow(0 0 16px rgba(0,250,105,0.35));flex-shrink:0;">
+                    <div>
+                        <div style="font-size:clamp(32px,6vw,56px);font-weight:900;line-height:1;letter-spacing:-0.02em;">GHUSUN</div>
+                        <div style="font-size:clamp(18px,3vw,26px);color:var(--accent);font-weight:700;direction:rtl;letter-spacing:0.02em;">غصن</div>
+                    </div>
+                </div>
                 <div class="hero-tag">
                     <i class="fa-solid fa-leaf"></i>
                     KASIT · University of Jordan · 98/100
@@ -801,6 +830,7 @@
                     <span class="green">Greenhouse</span><br>
                     Management
                 </h1>
+                <p style="font-size:clamp(13px,2vw,15px);color:var(--gray-3);font-weight:600;letter-spacing:0.08em;margin-top:-8px;margin-bottom:12px;direction:rtl;">غصن — نظام إدارة البيوت المحمية بالذكاء الاصطناعي</p>
                 <p class="hero-sub">
                     Automating agriculture for Jordan and the MENA region at a fraction of enterprise cost. Seeking partnership, pilot access, and mentorship.
                 </p>
@@ -1219,15 +1249,17 @@
         <h2 class="contact-title">Ready to modernize<br>Jordanian agriculture?</h2>
         <p class="contact-sub">Seeking strategic partnerships and early-access pilots across Jordan.</p>
         <div class="contact-btns">
-            <a href="mailto:contact@ghusun.com" class="btn btn-primary">
-                <i class="fa-solid fa-envelope"></i> Email Us
-            </a>
-            <a href="#" class="btn btn-outline">
-                <i class="fa-solid fa-file-arrow-down"></i> Download Pitch Deck
+            <a href="mailto:aboodwork2026@gmail.com" class="btn btn-primary">
+                <i class="fa-solid fa-envelope"></i> aboodwork2026@gmail.com
             </a>
         </div>
         <div class="footer-bar">
-            <div class="footer-logo">GHUSUN<span>.</span></div>
+            <div style="display:flex;align-items:center;gap:10px;">
+                <img src="logo.png" alt="GHUSUN" style="height:32px;width:auto;filter:drop-shadow(0 0 6px rgba(0,250,105,0.3));">
+                <div>
+                    <div class="footer-logo" style="font-size:clamp(15px,2.5vw,18px);font-weight:900;letter-spacing:0.06em;">GHUSUN <span style="color:var(--accent)">·</span> <span style="color:var(--accent);font-size:0.85em;direction:rtl;">غصن</span></div>
+                </div>
+            </div>
             <div class="footer-copy">© 2026 GHUSUN · Built in Jordan · KASIT, University of Jordan</div>
         </div>
     </div>
