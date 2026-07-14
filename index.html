@@ -338,7 +338,7 @@
 
         /* Stats row */
         .hero-stats {
-            display: grid; grid-template-columns: repeat(3,1fr);
+            display: grid; grid-template-columns: repeat(4,1fr);
             border-radius: var(--r-lg);
             overflow: hidden;
             border: 1px solid var(--border);
@@ -772,7 +772,7 @@
         /* ── mobile: ≤ 480px ── */
         @media (max-width: 480px) {
             .pricing-grid   { grid-template-columns: 1fr; }
-            .hero-stats     { grid-template-columns: repeat(3,1fr); }
+            .hero-stats     { grid-template-columns: repeat(2,1fr); }
             .contact-btns   { flex-direction: column; align-items: stretch; }
             .contact-btns .btn { justify-content: center; }
             .hero-actions   { flex-direction: column; align-items: stretch; }
@@ -796,10 +796,10 @@
             </div>
         </a>
         <ul class="nav-links">
-            <li><a href="#strategy">Problem</a></li>
+            <li><a href="#where-we-are">Where We Are</a></li>
+            <li><a href="#market">Market</a></li>
             <li><a href="#pricing">Business Model</a></li>
             <li><a href="#roadmap">AI Roadmap</a></li>
-            <li><a href="#team">Team</a></li>
             <li><a href="#contact" class="btn btn-primary nav-cta">Contact</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -808,10 +808,10 @@
     </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-    <a href="#strategy"  onclick="closeMenu()">Problem</a>
+    <a href="#where-we-are" onclick="closeMenu()">Where We Are</a>
+    <a href="#market"    onclick="closeMenu()">Market</a>
     <a href="#pricing"   onclick="closeMenu()">Business Model</a>
     <a href="#roadmap"   onclick="closeMenu()">AI Roadmap</a>
-    <a href="#team"      onclick="closeMenu()">Team</a>
     <a href="#contact" class="btn btn-primary" onclick="closeMenu()">Contact Us</a>
 </div>
 
@@ -834,17 +834,16 @@
                     </div>
                 </div>
                 <div class="hero-tag">
-                    <i class="fa-solid fa-leaf"></i>
-                    KASIT · University of Jordan · 98/100
+                    <i class="fa-solid fa-seedling"></i>
+                    Prototype Stage — Seeking First Pilot Support
                 </div>
                 <h1 class="hero-headline">
-                    AI-Powered Smart<br>
-                    <span class="green">Greenhouse</span><br>
-                    Management
+                    GHUSUN<br>
+                    <span class="green">Business Model</span>
                 </h1>
                 <p style="font-size:clamp(13px,2vw,15px);color:var(--gray-3);font-weight:600;letter-spacing:0.08em;margin-top:-8px;margin-bottom:12px;direction:rtl;">غصن — نظام إدارة البيوت المحمية بالذكاء الاصطناعي</p>
                 <p class="hero-sub">
-                    Automating agriculture for Jordan and the MENA region at a fraction of enterprise cost. Seeking partnership, pilot access, and mentorship.
+                    Smart Greenhouse Management — Jordan & MENA Region
                 </p>
                 <div class="hero-actions">
                     <a href="#pricing" class="btn btn-primary">
@@ -857,7 +856,11 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-num">4</div>
-                        <div class="hero-stat-label">Pricing Tiers</div>
+                        <div class="hero-stat-label">Tiers</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">JOD</div>
+                        <div class="hero-stat-label">Currency</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-num">3</div>
@@ -865,7 +868,7 @@
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-num">3</div>
-                        <div class="hero-stat-label">Growth Phases</div>
+                        <div class="hero-stat-label">Phases</div>
                     </div>
                 </div>
             </div>
@@ -912,45 +915,160 @@
     </div>
 </section>
 
-<!-- ══ PROBLEM & STRATEGY ════════════════════════════════════════════════ -->
-<section id="strategy" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+<!-- ══ WHERE WE ARE ══════════════════════════════════════════════════════ -->
+<section id="where-we-are" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
     <div class="container">
-        <div class="strategy-intro">
-            <div>
-                <p class="label">The Problem</p>
-                <h2 class="heading">Farmers Are Left Behind</h2>
-                <p class="subtext">Enterprise smart-farming systems cost thousands of dollars and require dedicated technical staff — leaving small Jordanian farmers unable to afford automation.</p>
+        <div style="margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Where We Are</p>
+            <h2 class="heading">Current Stage —<br>and What We're Asking For</h2>
+        </div>
+        <div class="strategy-cards">
+            <div class="card fade-up">
+                <p class="label" style="color:var(--accent);margin-bottom:16px;">Today</p>
+                <div class="check-list">
+                    <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Fully functional prototype — senses environmental conditions, controls actuators, and runs the AI decision loop end-to-end</div>
+                    <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Not yet deployed in a real, working greenhouse</div>
+                    <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Dr. Malek Alajlouni, of the Agriculture Department, has followed the project throughout its development and is interested in hosting the pilot in his own greenhouse</div>
+                </div>
             </div>
-            <div style="padding-top:4px">
-                <p class="label">Our Answer</p>
-                <h2 class="heading" style="font-size:clamp(24px,4vw,38px)">Two Paths. Zero Friction.</h2>
-                <p class="subtext">We meet the farmer exactly where they are — no infrastructure destruction required, installation in hours.</p>
+            <div class="card fade-up" style="background:var(--bg-deep);border-color:var(--accent);">
+                <p class="label" style="color:var(--accent);margin-bottom:16px;">The Ask</p>
+                <div class="check-list">
+                    <div class="check-item"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> <span style="color:rgba(255,255,255,0.85)">Support to cover an estimated 250–350 JOD in one-time hardware, installation, and commissioning costs, plus roughly 20–30 JOD/month in operating costs for as long as the pilot runs</span></div>
+                    <div class="check-item"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> <span style="color:rgba(255,255,255,0.85)">No fixed timeframe — the pilot runs at Dr. Alajlouni's greenhouse for as long as it takes to gather meaningful real-world data</span></div>
+                    <div class="check-item"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> <span style="color:rgba(255,255,255,0.85)">What it proves: real-world reliability, actual impact on water/energy use and plant health, and validation of the pricing and AI model before wider rollout</span></div>
+                </div>
             </div>
+        </div>
+        <p style="font-size:13px;color:var(--gray-2);font-style:italic;margin-top:24px;line-height:1.6;">Everything below — pricing tiers, unit economics, AI roadmap — is the plan we intend to validate through that pilot, not a description of current operations.</p>
+    </div>
+</section>
+
+<!-- ══ MARKET OPPORTUNITY ═══════════════════════════════════════════════ -->
+<section id="market" class="section">
+    <div class="container">
+        <div style="margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Market Opportunity</p>
+            <h2 class="heading">Why Jordan,<br>Why Now</h2>
+        </div>
+        <div class="strategy-cards">
+            <div class="card fade-up">
+                <p class="label">Local</p>
+                <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:10px;">~35,000 Greenhouses in Jordan</h3>
+                <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">Jordan's Jordan Valley and Highlands regions have historically counted roughly 23,800 and 11,000 greenhouses respectively (FAO figures) — the country's small-farm structure means a large share of these are individually owned and operated, exactly the retrofit customer GHUSUN is built for. This figure is dated and likely understates today's count, but it establishes a real, sizable addressable base within one country.</p>
+            </div>
+            <div class="card fade-up">
+                <p class="label">Regional</p>
+                <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:10px;">Water Scarcity Driving Demand</h3>
+                <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">Agriculture consumes about 65% of total water use across the MENA region, making water-efficient automation a structural need rather than a nice-to-have. The global precision agriculture market was valued at roughly $9.3B in 2024 and is projected to more than double by 2033 — with the Middle East specifically flagged as an early-stage, fast-growing adopter driven by water scarcity and food security pressure.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ COMPETITIVE LANDSCAPE ════════════════════════════════════════════ -->
+<section id="competition" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+    <div class="container">
+        <div style="margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Competitive Landscape</p>
+            <h2 class="heading">Where GHUSUN<br>Fits</h2>
+        </div>
+        <div class="strategy-cards">
+            <div class="card fade-up">
+                <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:8px;">Smart Green (Jordan)</h3>
+                <div style="display:inline-block;padding:4px 10px;background:rgba(0,250,105,0.1);color:var(--accent);font-size:11px;font-weight:700;border-radius:4px;margin-bottom:16px;">Adjacent — Irrigation Focus</div>
+                <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;margin-bottom:16px;">A Jordan-based agritech startup founded in 2020, best known for Fertigo, a smart irrigation and fertigation system addressing water scarcity through IoT and cloud-based control.</p>
+                <div style="background:rgba(0,250,105,0.05);border-left:3px solid var(--accent);padding:16px;font-size:13px;color:var(--gray-1);line-height:1.6;">
+                    GHUSUN differs by covering the full greenhouse stack — sensing, ventilation, lighting, and irrigation together, with an LLM-based agentic decision layer and plant-level computer vision — rather than irrigation alone.
+                </div>
+            </div>
+            <div class="card fade-up">
+                <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:8px;">Pure Harvest Smart Farms (UAE)</h3>
+                <div style="display:inline-block;padding:4px 10px;background:var(--bg-deep);color:var(--gray-1);font-size:11px;font-weight:700;border-radius:4px;margin-bottom:16px;border:1px solid var(--border);">Adjacent — Different Segment</div>
+                <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;margin-bottom:16px;">A capital-intensive controlled-environment agriculture company that builds and operates its own high-tech greenhouses at scale, having raised over $180M to date.</p>
+                <div style="background:rgba(0,250,105,0.05);border-left:3px solid var(--accent);padding:16px;font-size:13px;color:var(--gray-1);line-height:1.6;">
+                    GHUSUN targets the opposite end of the market: existing smallholder farmers retrofitting greenhouses they already own, at a fraction of the capital cost, rather than new-build industrial infrastructure.
+                </div>
+            </div>
+        </div>
+        <p style="font-size:13px;color:var(--gray-2);font-style:italic;margin-top:24px;line-height:1.6;">We have not identified a direct competitor in Jordan or the wider MENA region combining multi-actuator automation, agentic AI decision-making, and computer-vision plant health analysis in a single retrofit-friendly system.</p>
+    </div>
+</section>
+
+<!-- ══ TEAM ═════════════════════════════════════════════════════════════ -->
+<section id="team" class="section">
+    <div class="container">
+        <div style="margin-bottom:clamp(36px,6vw,56px);text-align:center;">
+            <p class="label">Who's Building This</p>
+            <h2 class="heading">Team</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;">
+            <div class="card fade-up">
+                <h3 style="font-size:18px;font-weight:800;margin-bottom:4px;">Saba Tell</h3>
+                <p style="font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:12px;">Product Lead, AI & Embedded Systems</p>
+                <p style="font-size:13px;color:var(--gray-2);line-height:1.6;">Led the research and product vision, designed the system architecture, developed the AI logic, embedded system, and UI/UX, and coordinated the overall GHUSUN solution.</p>
+            </div>
+            <div class="card fade-up">
+                <h3 style="font-size:18px;font-weight:800;margin-bottom:4px;">Abdelhadi Zatar</h3>
+                <p style="font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:12px;">Full-Stack Software & Systems Engineer</p>
+                <p style="font-size:13px;color:var(--gray-2);line-height:1.6;">Developed the backend platform, APIs, and system integration, while leading software implementation, testing, and validation.</p>
+            </div>
+            <div class="card fade-up">
+                <h3 style="font-size:18px;font-weight:800;margin-bottom:4px;">Sara Shawagfeh</h3>
+                <p style="font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:12px;">Hardware Integration & Frontend Engineer</p>
+                <p style="font-size:13px;color:var(--gray-2);line-height:1.6;">Led hardware assembly, greenhouse prototype construction, sensor integration, admin dashboard development, and project documentation.</p>
+            </div>
+            <div class="card fade-up" style="background:var(--bg-deep);border-color:var(--border);">
+                <h3 style="font-size:18px;font-weight:800;margin-bottom:4px;color:var(--accent);">Dr. Malek Alajlouni</h3>
+                <p style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:12px;">Advisor — Agriculture Department</p>
+                <p style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;">Has followed GHUSUN's development throughout the process and is interested in hosting the first real-greenhouse pilot at his own site.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ ACTUATOR STRATEGY ════════════════════════════════════════════════ -->
+<section id="strategy-hardware" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+    <div class="container">
+        <div style="margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Hardware Strategy</p>
+            <h2 class="heading">Actuator Approach —<br>Retrofit or Full Kit?</h2>
         </div>
         <div class="strategy-cards">
             <div class="card fade-up" style="display:flex;gap:18px;">
                 <div class="icon-box"><i class="fa-solid fa-plug-circle-bolt"></i></div>
                 <div>
                     <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:10px;">Option A — Retrofit Mode</h3>
-                    <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">We connect smart relay switches to the farmer's existing pumps and fans. If they have a manual button for ventilation, a relay sits inline and GHUSUN "presses" it digitally — zero infrastructure destruction.</p>
-                    <div class="check-list">
-                        <div class="check-item"><i class="fa-solid fa-check"></i> 2–4 hour installation</div>
-                        <div class="check-item"><i class="fa-solid fa-check"></i> No hardware replacement</div>
-                        <div class="check-item"><i class="fa-solid fa-check"></i> Lowest barrier to entry</div>
-                        <div class="check-item"><i class="fa-solid fa-check"></i> Ideal for existing greenhouses</div>
+                    <div style="display:inline-block;padding:4px 10px;background:rgba(0,250,105,0.1);color:var(--accent);font-size:11px;font-weight:700;border-radius:4px;margin-bottom:12px;">Lower Barrier to Entry</div>
+                    <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">GHUSUN integrates with the farmer's <em>existing</em> actuators — pumps, fans, vents — using smart relay switches. If a farmer has a manual button for ventilation, a relay module sits inline and GHUSUN "presses" it digitally. No need to replace working hardware.</p>
+                    <div class="check-list" style="margin-bottom:16px;">
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Relay module interfaces with existing wiring</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Servo/mechanical actuator for physical switches if needed</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Zero infrastructure destruction</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Installation time: 2–4 hours</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Ideal for farmers with existing greenhouses</div>
+                    </div>
+                    <div style="background:rgba(0,250,105,0.05);border-left:3px solid var(--accent);padding:16px;font-size:13px;color:var(--gray-1);line-height:1.6;">
+                        <i class="fa-solid fa-check" style="color:var(--accent);margin-right:6px;"></i> <strong>Recommended as the default entry point.</strong> Lowers switching cost dramatically and builds trust before the farmer commits to new hardware.
                     </div>
                 </div>
             </div>
             <div class="card fade-up" style="display:flex;gap:18px;">
                 <div class="icon-box"><i class="fa-solid fa-box-open"></i></div>
                 <div>
-                    <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:10px;">Option B — Full Turnkey Kit</h3>
-                    <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">GHUSUN provides the complete hardware stack — ESP32-S3 controller, sensor array, irrigation pump, ventilation fan, and LED grow lights — all pre-wired, tested, and installed by our team.</p>
-                    <div class="check-list">
-                        <div class="check-item"><i class="fa-solid fa-check"></i> Pre-wired and tested</div>
-                        <div class="check-item"><i class="fa-solid fa-check"></i> On-site installation</div>
-                        <div class="check-item"><i class="fa-solid fa-check"></i> Weatherproof enclosure</div>
-                        <div class="check-item"><i class="fa-solid fa-check"></i> Higher revenue per customer</div>
+                    <h3 style="font-size:clamp(17px,2.5vw,20px);font-weight:800;margin-bottom:10px;">Option B — Full Kit</h3>
+                    <div style="display:inline-block;padding:4px 10px;background:var(--bg-deep);color:var(--gray-1);font-size:11px;font-weight:700;border-radius:4px;margin-bottom:12px;border:1px solid var(--border);">Turnkey Solution</div>
+                    <p style="font-size:var(--fs-sm);color:var(--gray-2);line-height:1.7;">GHUSUN provides the complete hardware stack — sensors, controller, pumps, fan, LED grow lights — all pre-wired, tested, and ready to deploy. Ideal for new greenhouses or farmers with no existing automation.</p>
+                    <div class="check-list" style="margin-bottom:16px;">
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> ESP32-S3 controller unit (GHUSUN-branded)</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> DHT11, soil moisture, LDR sensor array</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Irrigation pump(s) + relay board</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Ventilation fan + LED grow light strip</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Weatherproof enclosure + power supply</div>
+                        <div class="check-item"><i class="fa-solid fa-arrow-right"></i> Installation + commissioning by GHUSUN team</div>
+                    </div>
+                    <div style="background:rgba(0,250,105,0.05);border-left:3px solid var(--accent);padding:16px;font-size:13px;color:var(--gray-1);line-height:1.6;">
+                        <i class="fa-solid fa-check" style="color:var(--accent);margin-right:6px;"></i> <strong>Higher upfront revenue per customer.</strong> Sold as an add-on or bundled with Pro/Enterprise tiers. Commands premium pricing due to turnkey convenience.
                     </div>
                 </div>
             </div>
@@ -962,105 +1080,180 @@
 <section id="pricing" class="section" style="border-top:1px solid var(--border)">
     <div class="container">
         <div style="text-align:center;margin-bottom:clamp(36px,6vw,56px)">
-            <p class="label">Business Model</p>
-            <h2 class="heading">Four Plans. One Scalable System.</h2>
-            <p class="subtext" style="margin:14px auto 0;text-align:center;max-width:600px">Hardware revenue upfront. Recurring SaaS revenue every month. As the user base grows, per-user costs shrink while revenue scales linearly.</p>
+            <p class="label">Pricing Tiers</p>
+            <h2 class="heading">Four Plans —<br>One System.</h2>
         </div>
         <div class="pricing-grid">
 
             <!-- Seedling -->
             <div class="p-card fade-up">
+                <div class="featured-badge" style="background:rgba(255,255,255,0.1);color:var(--white);">Entry</div>
                 <div class="p-emoji">🌱</div>
                 <div class="p-name">Seedling</div>
-                <div class="p-desc">Students, individual trials, and first-time users. Build trust with zero risk.</div>
-                <div class="p-amount">0</div>
-                <div class="p-period">JOD / month</div>
+                <div class="p-desc">Individual farmer, trial, or student</div>
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gray-2);margin-bottom:4px;">Monthly Fee</div>
+                <div class="p-amount">0 <span style="font-size:14px;color:var(--gray-2);">JOD</span></div>
                 <div class="p-setup">Free forever — monitoring only</div>
                 <div class="p-divider"></div>
-                <div class="p-feats">
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Real-time sensor dashboard</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Basic alerts via app</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 1 greenhouse zone</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 7-day data history</div>
-                    <div class="p-feat"><i class="fa-solid fa-xmark no"></i> <span>No AI decisions</span></div>
-                    <div class="p-feat"><i class="fa-solid fa-xmark no"></i> <span>No actuator control</span></div>
+                
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Hardware</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-minus" style="color:#666"></i> <span style="color:#aaa">No hardware included</span></div>
+                    <div class="p-feat"><i class="fa-solid fa-minus" style="color:#666"></i> <span style="color:#aaa">Self-sourced sensors required</span></div>
                 </div>
-                <div class="p-quota" style="margin-top:auto;margin-top:18px;border-color:var(--border);background:transparent">
-                    <i class="fa-solid fa-circle-info" style="color:var(--gray-3)"></i>
-                    <span class="dim"> Self-sourced sensors required</span>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Software</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Real-time sensor dashboard (read-only)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Basic alerts via app notification</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 1 greenhouse zone</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 7-day data history</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">AI</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-minus" style="color:#666"></i> <span style="color:#aaa">No AI decisions included</span></div>
+                    <div class="p-feat"><i class="fa-solid fa-minus" style="color:#666"></i> <span style="color:#aaa">No actuator control</span></div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Support</div>
+                <div class="p-feats">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Community forum only</div>
                 </div>
             </div>
 
             <!-- Grower -->
             <div class="p-card fade-up">
+                <div class="featured-badge" style="background:rgba(255,255,255,0.1);color:var(--white);">Most Popular</div>
                 <div class="p-emoji">🌿</div>
                 <div class="p-name">Grower</div>
-                <div class="p-desc">Small farmer with one greenhouse. Retrofit hardware integration.</div>
-                <div class="p-amount">25</div>
-                <div class="p-period">JOD / month</div>
-                <div class="p-setup"><strong>390 JOD</strong> one-time hardware setup</div>
+                <div class="p-desc">Small farmer — 1 greenhouse</div>
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gray-2);margin-bottom:4px;">One-Time Setup</div>
+                <div class="p-amount">390 <span style="font-size:14px;color:var(--gray-2);">JOD</span></div>
+                <div class="p-setup">+ 25 JOD/month subscription</div>
                 <div class="p-divider"></div>
-                <div class="p-feats">
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Full dashboard + actuator control</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 2 greenhouse zones</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 30-day data history</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> SMS + app alerts</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Plant profiles (Mint, Basil)</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Email support — 48hr</div>
+                
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Hardware (Retrofit)</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> ESP32-S3 controller unit</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> DHT11 + soil moisture + LDR sensors</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Relay board (connects to existing actuators)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Android app + Firebase setup</div>
                 </div>
-                <div class="p-quota">
-                    <i class="fa-solid fa-brain" style="color:var(--accent)"></i>
-                    <span> 200 AI decisions/month</span><br>
-                    <span class="dim">Overage: 0.05 JOD per decision</span>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Software</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Full dashboard + actuator control</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 2 greenhouse zones</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 30-day data history</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> SMS + app alerts</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Plant profiles: Mint, Basil</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">AI</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 200 AI decisions/month included</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Confidence scores + severity levels</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Overage: 0.05 JOD per decision</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Support</div>
+                <div class="p-feats">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Email support (48hr response)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Remote diagnostics</div>
                 </div>
             </div>
 
-            <!-- Pro Farm (Featured) -->
+            <!-- Pro Farm -->
             <div class="p-card featured fade-up">
                 <div class="featured-badge">Recommended</div>
-                <div class="p-emoji" style="margin-top:10px">🌳</div>
-                <div class="p-name">Pro Farm</div>
-                <div class="p-desc">Serious multi-zone operation. Full turnkey automation kit.</div>
-                <div class="p-amount green">55</div>
-                <div class="p-period">JOD / month</div>
-                <div class="p-setup"><strong>850 JOD</strong> full turnkey kit setup</div>
-                <div class="p-divider" style="background:rgba(0,250,105,.2)"></div>
-                <div class="p-feats">
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Full hardware kit (pump, fan, LEDs)</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Unlimited zones</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 90-day history + data export</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Predictive alerts</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Custom plant profiles</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> 1-year hardware warranty</div>
+                <div class="p-emoji">🌳</div>
+                <div class="p-name" style="color:var(--accent)">Pro Farm</div>
+                <div class="p-desc">Serious farmer — multi-zone operation</div>
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.5);margin-bottom:4px;">One-Time Setup</div>
+                <div class="p-amount green">850 <span style="font-size:14px;color:rgba(255,255,255,0.5);">JOD</span></div>
+                <div class="p-setup" style="color:rgba(255,255,255,0.6)">+ 55 JOD/month subscription</div>
+                <div class="p-divider"></div>
+                
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Hardware (Full Kit)</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> ESP32-S3 controller (GHUSUN-branded)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Full sensor array (all 3 types)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Irrigation pump + relay board</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Ventilation fan + LED grow lights</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Weatherproof enclosure + power supply</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> On-site installation by GHUSUN team</div>
                 </div>
-                <div class="p-quota">
-                    <i class="fa-solid fa-brain" style="color:var(--accent)"></i>
-                    <span> 1,000 AI decisions/month</span><br>
-                    <span class="dim">Seasonal optimization included</span>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Software</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Unlimited zones</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 90-day data history + export</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Advanced analytics dashboard</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Custom plant profile creation</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Multi-device access</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">AI</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 1,000 AI decisions/month</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Predictive alerts (pre-emptive action)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Seasonal crop optimization</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> CV pest & disease detection (Gemini)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Overage: 0.04 JOD per decision</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Support</div>
+                <div class="p-feats">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Priority support (24hr response)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Quarterly on-site maintenance visit</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> 1-year hardware warranty</div>
                 </div>
             </div>
 
             <!-- Cooperative -->
             <div class="p-card fade-up">
+                <div class="featured-badge" style="background:rgba(255,255,255,0.1);color:var(--white);">Enterprise</div>
                 <div class="p-emoji">🏭</div>
                 <div class="p-name">Cooperative</div>
-                <div class="p-desc">Agricultural co-ops, institutions, and B2G investors.</div>
-                <div class="p-amount" style="font-size:clamp(24px,4vw,34px)">Custom</div>
-                <div class="p-period">Quote-based</div>
-                <div class="p-setup">Contact GHUSUN for pricing</div>
+                <div class="p-desc">Agricultural co-ops, institutions, investors</div>
+                <div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--gray-2);margin-bottom:4px;">Pricing</div>
+                <div class="p-amount">Custom</div>
+                <div class="p-setup">Quote-based — contact GHUSUN</div>
                 <div class="p-divider"></div>
+                
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Hardware</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Multiple units deployed across farms</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Centralized hardware management</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Dedicated installation team</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Custom sensor configurations</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Software</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Multi-farm management dashboard</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Unlimited zones across all farms</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Full data history + API access</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Custom reporting for Ministry/NGO use</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> White-label option available</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">AI</div>
+                <div class="p-feats" style="margin-bottom:20px;">
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Unlimited AI decisions</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> CV pest & disease detection (Gemini)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Custom model fine-tuning (Phase 2)</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Aggregated insights across all farms</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> LLaMA local deployment (roadmap)</div>
+                </div>
+
+                <div style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Support</div>
                 <div class="p-feats">
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Multi-farm management</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Unlimited zones across all farms</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Full API access</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Custom reporting (Ministry/NGO)</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> White-label option</div>
-                    <div class="p-feat"><i class="fa-solid fa-check ok"></i> Dedicated account manager</div>
-                </div>
-                <div class="p-quota">
-                    <i class="fa-solid fa-infinity" style="color:var(--accent)"></i>
-                    <span> Unlimited AI decisions</span><br>
-                    <span class="dim">Aggregated cross-farm insights</span>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Dedicated account manager</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> SLA-backed response time</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Monthly on-site visits</div>
+                    <div class="p-feat"><i class="fa-solid fa-arrow-right" style="color:var(--accent)"></i> Full hardware replacement warranty</div>
                 </div>
             </div>
 
@@ -1068,194 +1261,277 @@
     </div>
 </section>
 
-<!-- ══ REVENUE STREAMS ══════════════════════════════════════════════════ -->
-<section class="section-sm" style="background:var(--bg-mid);border-top:1px solid var(--border)">
+<!-- ══ COST BREAKDOWN ═══════════════════════════════════════════════════ -->
+<section id="costs" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
     <div class="container">
-        <div style="margin-bottom:clamp(28px,5vw,44px)">
-            <p class="label">How We Make Money</p>
-            <h2 class="heading">Three Revenue Streams, One Product</h2>
+        <div style="margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Cost Breakdown</p>
+            <h2 class="heading">What Each Cost<br>Actually Covers</h2>
         </div>
-        <div class="streams-grid">
-            <div class="card stream-card fade-up">
-                <div class="stream-num">01</div>
-                <div>
-                    <div class="stream-title">Hardware Sales</div>
-                    <div class="stream-text">One-time revenue from the GHUSUN controller, sensor kits, and optional full actuator kit. Healthy margin built above raw component cost. Retrofit kits are lower cost but higher volume.</div>
-                </div>
-            </div>
-            <div class="card stream-card fade-up">
-                <div class="stream-num">02</div>
-                <div>
-                    <div class="stream-title">SaaS Subscription</div>
-                    <div class="stream-text">Monthly recurring revenue from software access, AI decision quotas, dashboard features, and support tiers. Per-user backend costs decrease as the user base grows — revenue scales linearly.</div>
-                </div>
-            </div>
-            <div class="card stream-card fade-up">
-                <div class="stream-num">03</div>
-                <div>
-                    <div class="stream-title">AI Overage & Add-ons</div>
-                    <div class="stream-text">Pay-per-use revenue when farmers exceed their AI quota. Additional plant profiles, advanced analytics exports, and custom reporting for cooperatives or government partners.</div>
-                </div>
-            </div>
-            <div class="card stream-card fade-up" style="opacity:.7;border-color:rgba(0,250,105,.05)">
-                <div class="stream-num dim">04</div>
-                <div>
-                    <div class="stream-title" style="color:var(--gray-2)">Data & Partnerships <span style="font-size:11px;color:var(--gray-3);font-weight:600"> — Future</span></div>
-                    <div class="stream-text">As GHUSUN accumulates anonymized farm data across Jordan, this dataset becomes valuable to seed companies, the Ministry of Agriculture, and NGOs like FAO — a realistic long-term B2G channel.</div>
-                </div>
-            </div>
+        <div style="overflow-x:auto;">
+            <table style="width:100%;min-width:700px;border-collapse:collapse;font-size:14px;">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding:16px 20px;border-bottom:1px solid var(--accent);white-space:nowrap;">Item</th>
+                        <th style="text-align:left;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding:16px 20px;border-bottom:1px solid var(--accent);white-space:nowrap;">Type</th>
+                        <th style="text-align:left;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding:16px 20px;border-bottom:1px solid var(--accent);white-space:nowrap;">Est. Cost (JOD)</th>
+                        <th style="text-align:left;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);padding:16px 20px;border-bottom:1px solid var(--accent);">Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background:rgba(0,250,105,0.1);"><td colspan="4" style="padding:10px 20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);">Hardware — Per Unit</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">ESP32-S3 microcontroller</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">One-time</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">5–10</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Core brain of the system</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Sensor array (DHT11 + soil + LDR)</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">One-time</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">8–15</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Replace every 2–3 years</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Relay board</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">One-time</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">5–8</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Controls actuators</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Full actuator kit (pump + fan + LED)</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Optional / Full Kit only</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">40–80</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Only if farmer has no existing hardware</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Enclosure + wiring + power supply</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">One-time</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">15–25</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Weatherproofing for greenhouse environment</td>
+                    </tr>
+
+                    <tr style="background:rgba(0,250,105,0.1);"><td colspan="4" style="padding:10px 20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);">Deployment — Per Installation</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Travel + labor (installation team)</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">One-time</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">30–60</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Depends on distance within Jordan</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Commissioning + calibration</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">One-time</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">20–30</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Sensor calibration, zone setup, app pairing</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Farmer training session</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">One-time</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">15–25</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">1–2 hour on-site walkthrough</td>
+                    </tr>
+
+                    <tr style="background:rgba(0,250,105,0.1);"><td colspan="4" style="padding:10px 20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);">Software — Monthly Operating Costs (GHUSUN's side)</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Firebase (per active device)</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Monthly</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">~1–3</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Scales with data volume; free tier covers early stage</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">OpenAI API (per 200 decisions)</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Monthly</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">~3–8</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">GPT-4o-mini keeps cost low; drops significantly in Phase 2</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Gemini API (CV — Pro/Cooperative only)</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Monthly</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">~4–10</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Pest & disease image detection; separate pipeline from decision engine</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Server / backend hosting</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Monthly</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">~5–15</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">FastAPI on cloud; shared across all users</td>
+                    </tr>
+
+                    <tr style="background:rgba(0,250,105,0.1);"><td colspan="4" style="padding:10px 20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--accent);">Maintenance — Ongoing</td></tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Sensor replacement (per visit)</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Every 2–3 years</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">10–20</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">DHT11 and soil sensors degrade in humid environments</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">On-site maintenance visit</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Quarterly (Pro) / Monthly (Enterprise)</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">25–50</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Physical inspection, firmware update, recalibration</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:16px 20px;font-weight:600;color:var(--white);">Remote diagnostics + bug fixes</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">As needed</td>
+                        <td style="padding:16px 20px;font-weight:800;color:var(--accent);white-space:nowrap;">Included in plan</td>
+                        <td style="padding:16px 20px;color:var(--gray-2);">Covered under subscription</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>
 
-<!-- ══ GUARANTEE ════════════════════════════════════════════════════════ -->
-<section class="section-sm" style="border-top:1px solid var(--border)">
+<!-- ══ REVENUE MODEL ════════════════════════════════════════════════════ -->
+<section id="revenue" class="section">
     <div class="container">
-        <div class="guarantee-box fade-up">
-            <div class="g-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
-            <div>
-                <h3 class="g-title">The 60-Day GHUSUN Guarantee</h3>
-                <p class="g-text">We price for premium quality because <strong>we carry the risk</strong>. If GHUSUN doesn't work for a farm within 60 days, we come, remove our hardware, and refund <strong>50% of the hardware cost</strong> — no questions asked.</p>
-                <div class="g-pills">
-                    <div class="g-pill"><i class="fa-solid fa-check"></i> 50% hardware refund</div>
-                    <div class="g-pill"><i class="fa-solid fa-check"></i> Free hardware pickup</div>
-                    <div class="g-pill"><i class="fa-solid fa-check"></i> Full subscription refund</div>
-                    <div class="g-pill"><i class="fa-solid fa-check"></i> Valid for Grower & Pro Farm</div>
-                </div>
+        <div style="margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Revenue Model</p>
+            <h2 class="heading">Three Streams,<br>One Product</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+            <div class="card fade-up">
+                <p class="label">Stream 01</p>
+                <h3 style="font-size:20px;font-weight:800;margin-bottom:12px;">Hardware Sales</h3>
+                <p style="font-size:14px;color:var(--gray-2);line-height:1.7;">One-time revenue from selling the GHUSUN controller unit, sensor kit, and optional full actuator kit. Margin is built in above raw component cost. Retrofit kits are lower cost but higher volume. Full kits command premium pricing and justify higher setup fees.</p>
+            </div>
+            <div class="card fade-up">
+                <p class="label">Stream 02</p>
+                <h3 style="font-size:20px;font-weight:800;margin-bottom:12px;">Subscription (SaaS)</h3>
+                <p style="font-size:14px;color:var(--gray-2);line-height:1.7;">Monthly recurring revenue from software access, AI decision quota, dashboard features, and support tiers. This is the most predictable and scalable revenue stream. As the user base grows, per-user backend costs decrease while revenue grows linearly.</p>
+            </div>
+            <div class="card fade-up">
+                <p class="label">Stream 03</p>
+                <h3 style="font-size:20px;font-weight:800;margin-bottom:12px;">AI Overage & Add-ons</h3>
+                <p style="font-size:14px;color:var(--gray-2);line-height:1.7;">Pay-per-use revenue when farmers exceed their monthly AI decision quota. Additional plant profiles, advanced analytics exports, and custom reporting for cooperatives or government partners also fall here. Predictable usage generates predictable revenue.</p>
+            </div>
+            <div class="card fade-up" style="background:var(--bg-deep);border-color:var(--border);">
+                <p class="label" style="color:var(--gray-2)">Stream 04 — Future</p>
+                <h3 style="font-size:20px;font-weight:800;margin-bottom:12px;color:var(--accent)">Data & Partnerships</h3>
+                <p style="font-size:14px;color:var(--gray-1);line-height:1.7;">As GHUSUN accumulates aggregated, anonymized farm data across Jordan, this dataset becomes valuable to seed companies, the Ministry of Agriculture, NGOs like FAO, and agricultural research institutions. B2G (business-to-government) partnerships are a realistic long-term revenue channel.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ══ AI ROADMAP ════════════════════════════════════════════════════════ -->
+<!-- ══ AI ROADMAP ═══════════════════════════════════════════════════════ -->
 <section id="roadmap" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
     <div class="container">
-        <div style="text-align:center;margin-bottom:clamp(36px,6vw,56px)">
-            <p class="label">Technical Moat</p>
-            <h2 class="heading">From Cloud LLM to Local Intelligence</h2>
-            <p class="subtext" style="margin:14px auto 0;text-align:center;max-width:580px">Our AI roadmap systematically eliminates ongoing API costs while building a Jordanian agricultural model no enterprise system can replicate.</p>
-        </div>
-        <div class="roadmap-grid">
-            <div class="rm-card active fade-up">
-                <div class="rm-phase live">Phase 1 — Current</div>
-                <h3 class="rm-title">Cloud AI API</h3>
-                <p class="rm-text">Powered by OpenAI API (GPT-4o-mini). Agentic reasoning with confidence scores and severity levels. Cost-effective at small scale — the right approach for early deployment.</p>
-                <div class="rm-badge green"><i class="fa-solid fa-circle-dot"></i> Live & Running</div>
+        <div class="roadmap-grid" style="display:grid;grid-template-columns:1fr 2fr;gap:clamp(36px,5vw,60px);">
+            <div style="position:relative;z-index:1;">
+                <p class="label">AI Roadmap</p>
+                <h2 class="heading" style="margin-bottom:20px;font-size:clamp(32px,4vw,48px);">From LLM to<br><span class="green" style="color:var(--accent)">Local Intelligence</span></h2>
+                <div style="width:60px;height:2px;background:var(--accent);margin-bottom:32px;"></div>
+                <p class="subtext">A phased approach to reducing API dependency and building a competitive moat in agricultural AI.</p>
             </div>
-            <div class="rm-card fade-up">
-                <div class="rm-phase dim">Phase 2 — 1–2 Years</div>
-                <h3 class="rm-title">Fine-Tuned Model</h3>
-                <p class="rm-text">LLM-generated decisions become labeled training data. A lightweight model (LSTM or TinyLLaMA) trained on GHUSUN-specific Jordanian agricultural data runs on our own servers.</p>
-                <div class="rm-badge dim"><i class="fa-solid fa-arrow-trend-down"></i> 10–50× cost reduction</div>
-            </div>
-            <div class="rm-card fade-up">
-                <div class="rm-phase dim">Phase 3 — 3+ Years</div>
-                <h3 class="rm-title">Local On-Device AI</h3>
-                <p class="rm-text">LLaMA-based model deployed locally on each farm. No internet required. Full data privacy. Zero ongoing API costs. A Jordan-specific AI that no enterprise system currently offers.</p>
-                <div class="rm-badge dim"><i class="fa-solid fa-lock"></i> Full data sovereignty</div>
+            <div class="timeline" style="display:flex;flex-direction:column;gap:24px;">
+                <div class="card fade-up" style="background:var(--bg-card);border:1px solid var(--accent);box-shadow:0 0 40px rgba(0,250,105,0.08);">
+                    <p class="label" style="margin-bottom:8px;"><i class="fa-solid fa-circle-dot" style="margin-right:6px;"></i> Phase 1 — Now (Current)</p>
+                    <p style="font-size:15px;color:var(--gray-1);line-height:1.6;margin-bottom:16px;">OpenAI API (GPT-4o-mini) powers all AI decisions. Agentic reasoning with confidence scores and severity levels. Cost is per-API-call — manageable at small scale but not sustainable at thousands of farms. This is the right approach for a student project and early deployment.</p>
+                    <div style="padding-top:16px;border-top:1px dashed rgba(0,250,105,0.3);font-size:13px;color:var(--accent);line-height:1.6;">
+                        Gemini runs as a separate CV pipeline (Pro Farm & Cooperative tiers) for pest and disease image detection — decoupled from the GPT-4o-mini decision engine, so the two models can be swapped or upgraded independently.
+                    </div>
+                </div>
+                <div class="card fade-up" style="background:var(--bg-deep);border:1px solid var(--border);">
+                    <p class="label" style="color:var(--gray-2);margin-bottom:8px;"><i class="fa-regular fa-circle" style="margin-right:6px;"></i> Phase 2 — In Progress</p>
+                    <p style="font-size:15px;color:var(--gray-2);line-height:1.6;">Rather than replacing the LLM, GHUSUN is being extended with a lightweight prediction layer that forecasts near-term environmental trends — soil moisture and temperature trajectories, for example. These forecasts, combined with live sensor readings and computer-vision plant health analysis, feed richer context into the LLM, so its decisions become more proactive, explainable, and context-aware — without losing the transparency and dynamic reasoning of an LLM-based agent. This hybrid design (predictive layer + agentic LLM) is more robust than either approach alone, and reduces reliance on the LLM for pattern recognition it isn't naturally suited for — which also lowers per-decision API cost over time.</p>
+                </div>
+                <div class="card fade-up" style="background:var(--bg-deep);border:1px solid var(--border);">
+                    <p class="label" style="color:var(--gray-2);margin-bottom:8px;"><i class="fa-regular fa-circle" style="margin-right:6px;"></i> Phase 3 — 3+ Years</p>
+                    <p style="font-size:15px;color:var(--gray-2);line-height:1.6;margin-bottom:16px;">LLaMA-based model deployed locally on-device or on a local server at each farm. No internet required for AI decisions. Full data privacy. No ongoing API cost. This is the competitive moat — a locally-running, Jordan-specific agricultural AI that no enterprise system offers.</p>
+                    <div style="padding-top:16px;border-top:1px dashed rgba(255,255,255,0.1);font-size:13px;color:var(--gray-3);line-height:1.6;">
+                        Every automated decision passes through a safety and semantic validation layer with built-in cooldowns before any actuator command is issued — no AI output reaches hardware unchecked.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ══ GO-TO-MARKET ══════════════════════════════════════════════════════ -->
-<section id="gtm" class="section" style="border-top:1px solid var(--border)">
+<!-- ══ GUARANTEE & PRICING RATIONALE ════════════════════════════════════ -->
+<section id="guarantee" class="section">
     <div class="container">
-        <div style="margin-bottom:clamp(36px,6vw,52px)">
-            <p class="label">Go-to-Market</p>
-            <h2 class="heading">Three Phases to Scale</h2>
+        <div style="margin-bottom:clamp(36px,6vw,56px)">
+            <p class="label">Customer Protection — Future Policy</p>
+            <h2 class="heading">The GHUSUN<br>Guarantee</h2>
+            <p style="font-size:14px;color:var(--gray-2);font-style:italic;margin-top:16px;max-width:700px;line-height:1.6;">This is the guarantee GHUSUN intends to offer once the model is validated and paid tiers launch commercially. During the pilot phase, terms are agreed directly with pilot partners rather than through this policy.</p>
         </div>
-        <div class="gtm-grid">
-            <div class="gtm-card fade-up">
-                <div class="gtm-num">01</div>
-                <div class="gtm-label">Now — 12 Months</div>
-                <h3 class="gtm-title">Prove It</h3>
-                <p class="gtm-text">Deploy 5–10 pilot units with real farmers near Amman and the Jordan Valley. Offer the free Seedling tier to build trust. Founders handle all installation personally. Target: first 3 paying Grower-tier customers.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;">
+            <div class="card fade-up" style="grid-column:1/-1;background:var(--bg-mid);border-color:var(--accent);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center;padding:clamp(32px,5vw,60px);">
+                <div>
+                    <div style="font-size:clamp(64px,8vw,96px);font-weight:900;line-height:1;color:var(--accent);letter-spacing:-0.03em;">60</div>
+                    <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gray-2);margin-top:8px;">Day Guarantee</div>
+                    <div style="font-size:clamp(32px,4vw,42px);font-weight:800;line-height:1;color:var(--white);margin-top:32px;">50%</div>
+                    <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gray-2);margin-top:8px;">Hardware Refund</div>
+                </div>
+                <div>
+                    <div style="font-size:clamp(18px,2.5vw,22px);color:var(--white);font-style:italic;line-height:1.6;margin-bottom:24px;">"If GHUSUN doesn't work for your greenhouse within 60 days, we come to you, pick up our hardware, and refund 50% of your hardware cost. No questions asked — as long as the equipment is undamaged and returned complete."</div>
+                    <div style="font-size:13px;color:var(--accent);font-weight:700;">— GHUSUN Satisfaction Guarantee</div>
+                </div>
             </div>
-            <div class="gtm-card fade-up">
-                <div class="gtm-num">02</div>
-                <div class="gtm-label">Year 1–2</div>
-                <h3 class="gtm-title">Grow It</h3>
-                <p class="gtm-text">Partner with 1–2 agricultural cooperatives for bulk deployment. Apply for Ministry of Agriculture and Royal Scientific Society grants. Launch Pro Farm tier with full hardware kit. Target: 50–100 active subscriptions.</p>
+            
+            <div class="card fade-up">
+                <p class="label">What's Covered</p>
+                <div class="check-list">
+                    <div class="check-item"><i class="fa-solid fa-check"></i> 50% refund on hardware setup cost (Grower: 195 JOD back / Pro: 425 JOD back)</div>
+                    <div class="check-item"><i class="fa-solid fa-check"></i> Free pickup — GHUSUN team collects all hardware from your farm</div>
+                    <div class="check-item"><i class="fa-solid fa-check"></i> Any monthly subscription fees paid are fully refunded</div>
+                    <div class="check-item"><i class="fa-solid fa-check"></i> Valid for all paid tiers (Grower and Pro Farm)</div>
+                </div>
             </div>
-            <div class="gtm-card fade-up">
-                <div class="gtm-num">03</div>
-                <div class="gtm-label">Year 3+</div>
-                <h3 class="gtm-title">Scale It</h3>
-                <p class="gtm-text">Deploy local LLaMA AI — eliminate ongoing API costs. Expand to the MENA region: Saudi Arabia, Iraq, Palestine. Launch white-label Cooperative tier. Monetize anonymized farm data. Target: 500+ active farms.</p>
+            
+            <div class="card fade-up">
+                <p class="label" style="color:#d4870a">Conditions & Exclusions</p>
+                <div class="check-list">
+                    <div class="check-item"><i class="fa-solid fa-minus" style="color:#d4870a"></i> Request must be made within 60 days of installation date</div>
+                    <div class="check-item"><i class="fa-solid fa-minus" style="color:#d4870a"></i> All hardware must be returned undamaged, complete, and free of misuse</div>
+                    <div class="check-item"><i class="fa-solid fa-minus" style="color:#d4870a"></i> Installation & deployment labor cost is non-refundable (sunk cost)</div>
+                    <div class="check-item"><i class="fa-solid fa-minus" style="color:#d4870a"></i> Damage due to water, fire, incorrect wiring, or third-party tampering voids guarantee</div>
+                    <div class="check-item"><i class="fa-solid fa-minus" style="color:#d4870a"></i> Not applicable to Seedling (free) or Cooperative (custom contract) tiers</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-up" style="background:transparent;border:1px solid var(--border);">
+            <p class="label">Revised Pricing Rationale</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-top:24px;">
+                <div>
+                    <h3 style="font-size:18px;font-weight:800;margin-bottom:12px;">Grower — 390 JOD setup</h3>
+                    <div style="font-size:13px;color:var(--gray-2);line-height:1.7;">
+                        Hardware cost: ~80 JOD<br>
+                        Installation labor: ~50 JOD<br>
+                        Software setup + onboarding: ~30 JOD<br>
+                        Brand + warranty risk buffer: ~40 JOD<br>
+                        Guarantee reserve (50% return risk): ~60 JOD<br>
+                        <strong style="color:var(--accent);display:block;margin-top:8px;">Margin: ~130 JOD per unit</strong>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size:18px;font-weight:800;margin-bottom:12px;">Pro Farm — 850 JOD setup</h3>
+                    <div style="font-size:13px;color:var(--gray-2);line-height:1.7;">
+                        Full hardware kit: ~180 JOD<br>
+                        Installation + commissioning: ~80 JOD<br>
+                        Training + documentation: ~30 JOD<br>
+                        Brand + warranty risk buffer: ~60 JOD<br>
+                        Guarantee reserve (50% return risk): ~130 JOD<br>
+                        <strong style="color:var(--accent);display:block;margin-top:8px;">Margin: ~370 JOD per unit</strong>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size:18px;font-weight:800;margin-bottom:12px;">Why Not Lower?</h3>
+                    <div style="font-size:13px;color:var(--gray-2);line-height:1.7;">
+                        A product priced too low signals low quality — especially for something managing a farmer's livelihood. The guarantee itself justifies higher pricing: the farmer pays more, but carries zero risk. That is a premium offer, and should be priced as one.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ══ VALIDATION & TEAM ════════════════════════════════════════════════ -->
-<section id="team" class="section" style="background:var(--bg-mid);border-top:1px solid var(--border)">
-    <div class="container">
-        <div style="margin-bottom:clamp(36px,6vw,52px)">
-            <p class="label">Validation & Team</p>
-            <h2 class="heading">Built with Rigor, Led by Engineers</h2>
-        </div>
-        <div class="val-grid">
-
-            <!-- Left: Validation -->
-            <div>
-                <div class="score-box fade-up">
-                    <div class="score-big">98</div>
-                    <div>
-                        <div class="score-label">Top IT Project Score</div>
-                        <div class="score-sub">King Abdullah II School of Information Technology<br>University of Jordan (KASIT)</div>
-                    </div>
-                </div>
-                <p class="sup-label">Supervising Faculty</p>
-                <div class="supervisors">
-                    <div class="sup-card fade-up">
-                        <div class="sup-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div>
-                            <div class="sup-name">Dr. Bashar Al-Shboul</div>
-                            <div class="sup-role">IT Faculty, University of Jordan</div>
-                        </div>
-                    </div>
-                    <div class="sup-card fade-up">
-                        <div class="sup-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div>
-                            <div class="sup-name">Dr. Dana Qudah</div>
-                            <div class="sup-role">IT Faculty, University of Jordan</div>
-                        </div>
-                    </div>
-                    <div class="sup-card fade-up">
-                        <div class="sup-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div>
-                            <div class="sup-name">Dr. Basima Elshqeirat</div>
-                            <div class="sup-role">IT Faculty, University of Jordan</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Team -->
-            <div>
-                <p class="sup-label">The Founding Team</p>
-                <div class="team-cards">
-                    <div class="team-card fade-up">
-                        <div class="avatar">AZ</div>
-                        <div class="team-name">Abdalhadi Zatar</div>
-                    </div>
-                    <div class="team-card fade-up">
-                        <div class="avatar">ST</div>
-                        <div class="team-name">Saba Tell</div>
-                    </div>
-                    <div class="team-card fade-up">
-                        <div class="avatar">SS</div>
-                        <div class="team-name">Sara Shawagfeh</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 
 <!-- ══ CONTACT / FOOTER ═════════════════════════════════════════════════ -->
+
 <section id="contact">
     <div class="container">
         <h2 class="contact-title">Ready to modernize<br>Jordanian agriculture?</h2>
